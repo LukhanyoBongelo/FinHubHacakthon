@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowdFund - Interledger Powered Crowdfunding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-coins"></i>
+                <span>OpenPay</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#campaigns" class="nav-link">Campaigns</a></li>
+                <li><a href="#create" class="nav-link">Start Campaign</a></li>
+                <li><a href="#wallet" class="nav-link">Wallet</a></li>
+            </ul>
+            <div class="wallet-info">
+                <span id="wallet-balance">R0.00</span>
+                <button id="connect-wallet" class="btn-primary">Connect Wallet</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Fund Dreams with Interledger</h1>
+            <p>The first crowdfunding platform powered by Interledger Protocol for instant, global payments</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('campaigns')">Explore Campaigns</button>
+                <button class="btn-secondary" onclick="scrollToSection('create')">Start Your Campaign</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Campaigns -->
+    <section id="campaigns" class="campaigns-section">
+        <div class="container">
+            <h2>Featured Campaigns</h2>
+            <div class="campaigns-grid" id="campaigns-grid">
+                <!-- Campaigns will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Create Campaign Section -->
+    <section id="create" class="create-section">
+        <div class="container">
+            <h2>Start Your Campaign</h2>
+            <form id="campaign-form" class="campaign-form">
+                <div class="form-group">
+                    <label for="title">Campaign Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="goal">Funding Goal (R)</label>
+                        <input type="number" id="goal" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration (days)</label>
+                        <input type="number" id="duration" min="1" max="365" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="technology">Technology</option>
+                        <option value="creative">Creative</option>
+                        <option value="social">Social Impact</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="payment-pointer">Your Payment Pointer</label>
+                    <input type="text" id="payment-pointer" placeholder="$wallet.example.com/alice" required>
+                    <small>Your Interledger payment pointer for receiving funds</small>
+                </div>
+                <button type="submit" class="btn-primary">Create Campaign</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Wallet Section -->
+    <section id="wallet" class="wallet-section">
+        <div class="container">
+            <h2>Your Wallet</h2>
+            <div class="wallet-card">
+                <div class="wallet-balance">
+                    <h3>Balance</h3>
+                    <span id="wallet-display">R0.00</span>
+                </div>
+                <div class="wallet-actions">
+                    <button id="add-funds" class="btn-primary">Add Funds</button>
+                    <button id="withdraw-funds" class="btn-secondary">Withdraw</button>
+                </div>
+            </div>
+            <div class="transaction-history">
+                <h3>Recent Transactions</h3>
+                <div id="transactions-list">
+                    <p class="no-transactions">No transactions yet</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Modal -->
+    <div id="campaign-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body">
+                <!-- Campaign details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="payment-form">
+                <h3>Support This Campaign</h3>
+                <div class="form-group">
+                    <label for="payment-amount">Amount (R)</label>
+                    <input type="number" id="payment-amount" min="1" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="supporter-name">Your Name (Optional)</label>
+                    <input type="text" id="supporter-name">
+                </div>
+                <div class="form-group">
+                    <label for="support-message">Message (Optional)</label>
+                    <textarea id="support-message" rows="3"></textarea>
+                </div>
+                <div class="payment-method">
+                    <h4>Payment via Interledger</h4>
+                    <p>Secure, instant payments powered by Interledger Protocol</p>
+                </div>
+                <button id="process-payment" class="btn-primary">Send Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
