@@ -1,1 +1,1 @@
-make use of the finhubSA open payment API
+Created an open payments systems using the Open Payments API called Interledger Protocol
